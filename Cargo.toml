@@ -1,0 +1,26 @@
+[package]
+name = "pico-macro-keys"
+version = "0.1.0"
+edition = "2021"
+
+[dependencies]
+embassy-executor = { version = "0.9.1", features = ["arch-cortex-m", "executor-thread", "defmt"] }
+embassy-time = { version = "0.5.0", features = ["defmt", "defmt-timestamp-uptime"] }
+embassy-rp = { version = "0.9.0", features = ["defmt", "rt", "critical-section-impl", "rom-v2-intrinsics", "rp2040", "time-driver"] }
+embassy-usb = { version = "0.5.1", features = ["defmt", "usbd-hid"] }
+embassy-futures = { version = "0.1.2" }
+
+defmt = "1.0.1"
+defmt-rtt = "1.1.0"
+static_cell = "2.1.1"
+cortex-m-rt = "0.7.5"
+panic-probe = { version = "1.0.0", features = ["print-defmt"] }
+usbd-hid = "0.8.2"
+
+[profile.release]
+debug = 2
+lto = true
+opt-level = 'z'
+
+[build-dependencies]
+dotenv = "0.15.0"
